@@ -127,7 +127,7 @@ button, input {
 }
 
 .header {
-	padding: 40px;
+	padding: 20px 40px;
 	background: {
 		color: rgb(211, 215, 255);
 	}
