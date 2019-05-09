@@ -3,16 +3,21 @@
 		<header class='header'>
 			<add-colors />
 		</header>
-
-		<transition-group
-			v-if='colorsRes.length > 0'
-			class='main'
+		<transition
 			tag='div'
-			name='fade'>
-			<template v-for='item of colorsRes'>
-				<color-row :key='item.id' :item='item'/>
-			</template>
-		</transition-group>
+			name='slide-fade'
+		>
+
+			<transition-group
+				v-if='colorsRes.length > 0'
+				class='main'
+				tag='div'
+				name='slide-fade'>
+				<template v-for='item of colorsRes'>
+					<color-row :key='item.id' :item='item'/>
+				</template>
+			</transition-group>
+		</transition>
 	</div>
 </template>
 
@@ -35,6 +40,7 @@ export default {
 			iColor2: 200,
 			iColor3: 0,
 			iColor4: 50,
+			deg:     0
 		};
 	},
 
@@ -62,7 +68,10 @@ export default {
 			if (this.iColor4 < 0) {
 				this.iColor4 = 360;
 			}
-			document.body.style.backgroundImage = `linear-gradient(45deg, ${this.colorBuild(this.iColor--)} 0%, ${this.colorBuild(this.iColor2++)} 33%, ${this.colorBuild(this.iColor3++)} 66%, ${this.colorBuild(this.iColor4--)} 100%)`;
+			if (this.deg > 360) {
+				this.deg = 0;
+			}
+			document.body.style.backgroundImage = `linear-gradient(${this.deg++}deg, ${this.colorBuild(this.iColor--)} 0%, ${this.colorBuild(this.iColor2++)} 33%, ${this.colorBuild(this.iColor3++)} 66%, ${this.colorBuild(this.iColor4--)} 100%)`;
 		}
 	},
 
@@ -79,6 +88,20 @@ export default {
 }
 
 .fade-enter, .fade-leave-to {
+	opacity: 0;
+}
+
+.slide-fade-enter-active {
+	transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+	transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+	transform: translateX(-100px);
 	opacity: 0;
 }
 

@@ -39,6 +39,7 @@
 
 <script>
 import fildset from './fildset.vue';
+import { mapGetters } from 'vuex';
 
 export default {
 	name:       'colors',
@@ -53,6 +54,16 @@ export default {
 			count:     0,
 			countItem: 0,
 		};
+	},
+
+	computed: {
+		...mapGetters({
+			colorsRes: 'colorsRes'
+		})
+	},
+
+	mounted() {
+		this.countItem = this.colorsRes.length;
 	},
 
 	methods: {
@@ -134,7 +145,7 @@ export default {
 .button {
 	height: 32px;
 	padding: 8px 16px;
-	transition: background 300ms;
+	transition: background 300ms, box-shadow 300ms;
 	border: {
 		width: 0;
 		radius: 4px;
@@ -146,12 +157,12 @@ export default {
 	font: {
 		weight: 700;
 	}
-	box-shadow: 2px 2px 4px #6d6d6d;
 	cursor: pointer;
 	text-transform: uppercase;
 
 	&:hover {
-		transition: background 300ms;
+		box-shadow: 2px 2px 4px #6d6d6d;
+		transition: background 300ms, box-shadow 300ms;
 		background: {
 			color: rgb(77, 78, 151);
 		}

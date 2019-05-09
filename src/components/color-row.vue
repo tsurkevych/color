@@ -36,13 +36,21 @@ export default {
 	justify-content: center;
 	flex-wrap: wrap;
 	padding: 10px;
+	//transition: background 300ms;
 	border: {
 		radius: 6px;
 	}
 	background: {
-		color: rgb(255, 255, 255);
+		color: rgb(234, 236, 255);
 	}
-	box-shadow: 1px 1px 8px #c0c0c0;
+	cursor: pointer;
+
+	&:hover {
+		//transition: background 300ms;
+		background: {
+			color:rgb(197, 203, 255);
+		}
+	}
 
 	+ .color-list {
 		margin: {

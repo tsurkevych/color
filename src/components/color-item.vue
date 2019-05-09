@@ -38,9 +38,12 @@ export default {
 	height: 40px;
 	margin: 5px;
 	border: {
+		width: 1px;
+		color: rgb(70, 70, 70);
+		style: solid;
 		radius: 6px;
 	}
-	box-shadow: 2px 1px 5px #868686;
+	//box-shadow: 2px 1px 5px #868686;
 	overflow: hidden;
 
 	> div {
@@ -58,12 +61,12 @@ export default {
 	&__orig {
 		top: 0;
 		right: 0;
-		bottom: 20px;
+		bottom: 50%;
 		left: 0;
 	}
 
 	&__revert {
-		top: 20px;
+		top: 50%;
 		right: 0;
 		bottom: 0;
 		left: 0;
