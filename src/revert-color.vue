@@ -1,24 +1,20 @@
 <template>
-	<div class='container'>
-		<header class='header'>
-			<add-colors />
-		</header>
-		<transition
-			tag='div'
-			name='slide-fade'
-		>
-
-			<transition-group
-				v-if='colorsRes.length > 0'
-				class='main'
-				tag='div'
-				name='slide-fade'>
+	<main
+		:style='{
+			"background": st
+		}'
+	>
+		<div class='container'>
+			<header class='header'>
+				<add-colors />
+			</header>
+			<div class='main'>
 				<template v-for='item of colorsRes'>
 					<color-row :key='item.id' :item='item'/>
 				</template>
-			</transition-group>
-		</transition>
-	</div>
+			</div>
+		</div>
+	</main>
 </template>
 
 <script>
@@ -40,7 +36,8 @@ export default {
 			iColor2: 200,
 			iColor3: 0,
 			iColor4: 50,
-			deg:     0
+			deg:     0,
+			st:      null
 		};
 	},
 
@@ -56,23 +53,14 @@ export default {
 		},
 
 		bgColor() {
-			if (this.iColor < 0) {
-				this.iColor = 360;
-			}
-			if (this.iColor2 > 360) {
-				this.iColor2 = 0;
-			}
-			if (this.iColor3 > 360) {
-				this.iColor3 = 0;
-			}
-			if (this.iColor4 < 0) {
-				this.iColor4 = 360;
-			}
-			if (this.deg > 360) {
-				this.deg = 0;
-			}
-			document.body.style.backgroundImage = `linear-gradient(${this.deg++}deg, ${this.colorBuild(this.iColor--)} 0%, ${this.colorBuild(this.iColor2++)} 33%, ${this.colorBuild(this.iColor3++)} 66%, ${this.colorBuild(this.iColor4--)} 100%)`;
-		}
+			if (this.iColor < 0) this.iColor = 360;
+			if (this.iColor2 > 360) this.iColor2 = 0;
+			if (this.iColor3 > 360) this.iColor3 = 0;
+			if (this.iColor4 < 0) this.iColor4 = 360;
+			if (this.deg > 360) this.deg = 0;
+
+			this.st = `linear-gradient(${this.deg++}deg, ${this.colorBuild(this.iColor--)} 0%, ${this.colorBuild(this.iColor2++)} 33%, ${this.colorBuild(this.iColor3++)} 66%, ${this.colorBuild(this.iColor4--)} 100%)`;
+		},
 	},
 
 	mounted() {
@@ -82,37 +70,16 @@ export default {
 </script>
 
 <style lang="scss">
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity .5s;
-}
-
-.fade-enter, .fade-leave-to {
-	opacity: 0;
-}
-
-.slide-fade-enter-active {
-	transition: all .3s ease;
-}
-
-.slide-fade-leave-active {
-	transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-to {
-	transform: translateX(-100px);
-	opacity: 0;
-}
-
 body {
 	width: 100%;
 	min-height: 100vh;
+}
+
+main {
+	width: 100%;
+	min-height: 100vh;
 	padding: 50px;
-	background: {
-		color: rgb(255, 166, 0);
-		size: cover
-	}
+	height: 100%;
 }
 
 * {

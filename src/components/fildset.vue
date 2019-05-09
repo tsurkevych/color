@@ -2,10 +2,13 @@
 	<div class='fildset'>
 		<input class='input'
 			:class='errorValid'
-			type='text'
 			v-model='color'
+			type='text'
 		>
-		<button class='fildset__remove' @click='remove'>
+		<button
+			@click='remove'
+			class='fildset__remove'
+		>
 			&times;
 		</button>
 	</div>

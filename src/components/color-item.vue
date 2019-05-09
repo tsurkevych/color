@@ -5,13 +5,16 @@
 				class='color__orig'
 				:style='{
 					"background": "#" + colors.color
-				}'>
+				}'
+			>
 				{{ '#' + colors.color}}
 			</div>
-			<div class='color__revert'
+			<div
+				class='color__revert'
 				:style='{
 					"background": "#" + colors.revert
-				}'>
+				}'
+			>
 				{{ '#' + colors.revert}}
 			</div>
 		</template>
@@ -43,7 +46,6 @@ export default {
 		style: solid;
 		radius: 6px;
 	}
-	//box-shadow: 2px 1px 5px #868686;
 	overflow: hidden;
 
 	> div {

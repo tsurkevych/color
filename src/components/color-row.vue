@@ -1,9 +1,12 @@
 <template>
-	<div class='color-list' @dblclick='remove'>
+	<div class='color-list'>
 		<template v-for='colors of item.colors'>
 			<color-item :key='colors.id' :colors='colors'/>
 		</template>
-		<button class='remove' @click='remove'>
+		<button
+			@click='remove'
+			class='remove'
+		>
 			&times;
 		</button>
 	</div>
@@ -36,20 +39,11 @@ export default {
 	justify-content: center;
 	flex-wrap: wrap;
 	padding: 10px;
-	//transition: background 300ms;
 	border: {
 		radius: 6px;
 	}
 	background: {
 		color: rgb(234, 236, 255);
-	}
-	cursor: pointer;
-
-	&:hover {
-		//transition: background 300ms;
-		background: {
-			color:rgb(197, 203, 255);
-		}
 	}
 
 	+ .color-list {
