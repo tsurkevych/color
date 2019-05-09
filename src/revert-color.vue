@@ -8,7 +8,7 @@
 			<header class='header'>
 				<add-colors />
 			</header>
-			<div class='main'>
+			<div class='main' v-if='colorsRes.length > 0'>
 				<template v-for='item of colorsRes'>
 					<color-row :key='item.id' :item='item'/>
 				</template>
