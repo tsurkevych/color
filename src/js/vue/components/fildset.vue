@@ -122,6 +122,7 @@ export default {
 .fildset {
 	position: relative;
 	width: 100%;
+	transition: all 300ms;
 
 	+ .fildset {
 		margin: {

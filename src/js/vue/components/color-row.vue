@@ -1,5 +1,7 @@
 <template>
-	<div class='color-list'>
+	<div
+		class='color-list'
+	>
 		<template v-for='colors of item.colors'>
 			<color-item :key='colors.id' :colors='colors'/>
 		</template>
@@ -45,6 +47,14 @@ export default {
 	background: {
 		color: rgb(234, 236, 255);
 	}
+	box-shadow: 2px 10px 10px #474747;
+
+	&:hover {
+		.remove {
+			opacity: 1;
+			transition: background 300ms, opacity 300ms;
+		}
+	}
 
 	+ .color-list {
 		margin: {
@@ -58,11 +68,12 @@ export default {
 		right: 6px;
 		width: 22px;
 		height: 22px;
-		transition: background 300ms;
+		transition: background 300ms, opacity 300ms;
 		border: {
 			width: 0;
 			radius: 4px;
 		}
+		opacity: 0;
 		background: {
 			color: rgb(255, 54, 54);
 		}
@@ -74,7 +85,7 @@ export default {
 		text-transform: uppercase;
 
 		&:hover {
-			transition: background 300ms;
+			transition: background 300ms, opacity 300ms;
 			background: {
 				color: rgb(255, 105, 105);
 			}

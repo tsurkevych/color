@@ -112,10 +112,6 @@ export default {
 	border: {
 		radius: 10px;
 	}
-	background: {
-		color: rgb(255, 255, 255);
-	}
-	box-shadow: 2px 10px 20px #474747;
 	z-index: 1;
 }
 </style>

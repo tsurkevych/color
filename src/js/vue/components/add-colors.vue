@@ -3,7 +3,8 @@
 		<transition name='fade' mode='out-in'>
 			<div v-if='colorArr.length > 0' class='input-group'>
 				<div class='container container--modal'>
-					<div class='button-row'>
+
+					<transition-group class='button-row' tag='div' name='fade' >
 						<template v-for='(item, index) of colorArr'>
 							<fildset
 								v-if='item'
@@ -14,7 +15,8 @@
 								@remove-item='removeItem'
 							/>
 						</template>
-					</div>
+					</transition-group>
+
 					<div class='button-row'>
 						<button class='button' @click='addItem' v-if='colorArr.length < 4'>
 							add
