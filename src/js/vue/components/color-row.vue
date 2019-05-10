@@ -63,33 +63,11 @@ export default {
 	}
 
 	.remove {
-		position: absolute;
 		top: 6px;
 		right: 6px;
 		width: 22px;
 		height: 22px;
-		transition: background 300ms, opacity 300ms;
-		border: {
-			width: 0;
-			radius: 4px;
-		}
 		opacity: 0;
-		background: {
-			color: rgb(255, 54, 54);
-		}
-		color: #ffffff;
-		font: {
-			size: 18px;
-		}
-		cursor: pointer;
-		text-transform: uppercase;
-
-		&:hover {
-			transition: background 300ms, opacity 300ms;
-			background: {
-				color: rgb(255, 105, 105);
-			}
-		}
 	}
 }
 </style>

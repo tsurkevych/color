@@ -7,7 +7,7 @@
 		>
 		<button
 			@click='remove'
-			class='fildset__remove'
+			class='remove'
 		>
 			&times;
 		</button>
@@ -130,33 +130,13 @@ export default {
 		}
 	}
 
-	&__remove {
-		position: absolute;
+	.remove {
 		top: 0;
 		right: 0;
 		width: 32px;
 		height: 32px;
-		transition: background 300ms;
 		border: {
-			width: 0;
-			radius: 0 4px 4px 0;
-		}
-		background: {
-			color: rgb(255, 54, 54);
-		}
-		color: #ffffff;
-		font: {
-			size: 24px;
-			weight: 700;
-		}
-		cursor: pointer;
-		text-transform: uppercase;
-
-		&:hover {
-			transition: background 300ms;
-			background: {
-				color: rgb(255, 105, 105);
-			}
+			radius: 0 2px 2px 0;
 		}
 	}
 }
