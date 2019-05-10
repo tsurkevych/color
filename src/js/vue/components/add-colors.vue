@@ -101,16 +101,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity .5s;
-}
-
-.fade-enter, .fade-leave-to {
-	opacity: 0;
-}
-
 .colors-row {
 	display: flex;
 	height: 42px;

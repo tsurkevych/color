@@ -8,11 +8,15 @@
 			<header class='header'>
 				<add-colors />
 			</header>
-			<div class='main' v-if='colorsRes.length > 0'>
-				<template v-for='item of colorsRes'>
-					<color-row :key='item.id' :item='item'/>
-				</template>
-			</div>
+			<transition name='bounce'>
+				<div class='main' v-if='colorsRes.length > 0'>
+					<transition-group name='bounce' >
+						<template v-for='item of colorsRes'>
+							<color-row :key='item.id' :item='item'/>
+						</template>
+					</transition-group>
+				</div>
+			</transition>
 		</div>
 	</main>
 </template>
@@ -69,32 +73,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-body {
-	width: 100%;
-	min-height: 100vh;
-}
-
-main {
-	width: 100%;
-	min-height: 100vh;
-	padding: 50px;
-	height: 100%;
-}
-
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	font-family: sans-serif
-}
-
-button, input {
-	&:focus {
-		outline: 0 none;
-	}
-}
-
+<style lang="scss" scope>
 .container {
 	width: 100%;
 	max-width: 800px;
@@ -102,6 +81,18 @@ button, input {
 		right: auto;
 		left: auto;
 	}
+
+	&--modal {
+		padding: 40px;
+		background: {
+			color: rgb(211, 215, 255);
+		}
+	}
+}
+
+.header {
+	position: relative;
+	padding: 20px 40px;
 	border: {
 		radius: 10px;
 	}
@@ -109,24 +100,22 @@ button, input {
 		color: rgb(211, 215, 255);
 	}
 	box-shadow: 2px 10px 20px #474747;
-	overflow: hidden;
-
-	&--modal {
-		padding: 40px;
-	}
-}
-
-.header {
-	padding: 20px 40px;
-	background: {
-		color: rgb(211, 215, 255);
+	z-index: 2;
+	margin: {
+		bottom: 50px;
 	}
 }
 
 .main {
+	position: relative;
 	padding: 40px;
+	border: {
+		radius: 10px;
+	}
 	background: {
 		color: rgb(255, 255, 255);
 	}
+	box-shadow: 2px 10px 20px #474747;
+	z-index: 1;
 }
 </style>
