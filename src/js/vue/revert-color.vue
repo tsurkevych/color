@@ -1,7 +1,7 @@
 <template>
 	<main
 		:style='{
-			"background": st
+			"background-image": gradient,
 		}'
 	>
 		<div class='container'>
@@ -36,12 +36,12 @@ export default {
 
 	data() {
 		return {
-			iColor:  360,
-			iColor2: 200,
-			iColor3: 0,
-			iColor4: 50,
-			deg:     0,
-			st:      null
+			iColor:   360,
+			iColor2:  200,
+			iColor3:  0,
+			iColor4:  50,
+			deg:      0,
+			gradient: null,
 		};
 	},
 
@@ -63,8 +63,16 @@ export default {
 			if (this.iColor4 < 0) this.iColor4 = 360;
 			if (this.deg > 360) this.deg = 0;
 
-			this.st = `linear-gradient(${this.deg++}deg, ${this.colorBuild(this.iColor--)} 0%, ${this.colorBuild(this.iColor2++)} 33%, ${this.colorBuild(this.iColor3++)} 66%, ${this.colorBuild(this.iColor4--)} 100%)`;
-		},
+			this.gradient = `
+				linear-gradient(
+					${this.deg++}deg,
+					${this.colorBuild(this.iColor--)} 0%,
+					${this.colorBuild(this.iColor2++)} 33%,
+					${this.colorBuild(this.iColor3++)} 66%,
+					${this.colorBuild(this.iColor4--)} 100%
+				)
+			`;
+		}
 	},
 
 	mounted() {
@@ -73,22 +81,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
-.container {
-	width: 100%;
-	max-width: 800px;
-	margin: {
-		right: auto;
-		left: auto;
-	}
-
-	&--modal {
-		padding: 40px;
-		background: {
-			color: rgb(211, 215, 255);
-		}
-	}
-}
+<style lang="scss" scoped>
 
 .header {
 	position: relative;
@@ -111,6 +104,9 @@ export default {
 	padding: 40px;
 	border: {
 		radius: 10px;
+	}
+	background: {
+		position: center;
 	}
 	z-index: 1;
 }
